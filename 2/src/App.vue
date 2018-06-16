@@ -1,35 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">User list</router-link> |
-      <router-link to="/user-edit">User edit</router-link>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav">
+          <router-link to="/" tag="li" active-class="active" exact>
+            <a class="nav-link" href="#">Home</a>
+          </router-link>
+          <router-link to="/users" tag="li" active-class="active" exact>
+            <a class="nav-link" href="#">Список пользователей</a>
+          </router-link>
+          <router-link to="/add" tag="li" active-class="active" exact>
+            <a href="#" class="nav-link">Добавить пользователя</a>
+          </router-link>
+        </div>
+      </div>
+    </nav>
     <router-view/>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-  margin: 0 10px;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style lang="sass">
+.nav-link
+  font-size: 20px
 </style>
