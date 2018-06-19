@@ -9,9 +9,8 @@
          v-if="!users.length">
       Oops: oops oops
     </div>
-    <user-list v-else
-               :users="users"
-    ></user-list>
+    <user-list v-else :users="users" />
+
   </div>
 </template>
 

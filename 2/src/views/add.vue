@@ -4,14 +4,19 @@
     <div v-if="!user"
          class="alert alert-warning"
     >Загрузка</div>
-    <user-form v-else
-               :user="user"
-               @input="value => user = value"
-    ></user-form>
+    <user-form v-else v-model="user" />
+    <div class="text-center">
+      <button type="button"
+              class="btn btn-primary"
+              @click="saveUser"
+      >Сохранить</button>
+    </div>
   </div>
 </template>
 
 <script>
+  import axios from '@/helpers/shortUrl.js';
+
   const emptyObject = {
     id: 0,
     isActive: false,
@@ -44,6 +49,17 @@
     methods: {
       loadData() {
         this.user = Object.assign({}, emptyObject)
+      },
+      saveUser() {
+        axios.post('/users', this.user)
+          .then(response => {
+            console.log('Done!!!');
+            this.redirectToList();
+          })
+          .catch(e => console.error(e))
+      },
+      redirectToList() {
+        this.$router.push('/users')
       }
     }
   }

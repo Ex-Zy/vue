@@ -1,22 +1,6 @@
 {
   "users": [
     {
-      "id": 0,
-      "isActive": false,
-      "balance": "$1,913.57",
-      "picture": "http://i.imgur.com/xmm2bjD.png",
-      "age": 32,
-      "accessLevel": "user",
-      "firstName": "Mabel",
-      "lastName": "Miranda",
-      "company": "LIQUIDOC",
-      "email": "mabel.miranda@liquidoc.biz",
-      "phone": "+7 (971) 535-2903",
-      "address": "540 Stuyvesant Avenue, Ivanhoe, Arizona, 1682",
-      "about": "Enim qui dolor aute elit reprehenderit consectetur proident. Occaecat cupidatat sunt elit qui ullamco Lorem deserunt. Consectetur eiusmod reprehenderit eiusmod duis excepteur laborum voluptate do.",
-      "registered": "16.04.2016"
-    },
-    {
       "id": 1,
       "isActive": true,
       "balance": "$1,424.16",
@@ -162,38 +146,35 @@
     },
     {
       "id": 11,
-      "guid": "",
-      "isActive": false,
-      "balance": "0",
-      "picture": "http://placehold.it/128x128",
-      "age": "32",
-      "eyeColor": "",
-      "firstName": "Тестовый",
-      "lastName": "Тестов",
-      "company": "компания",
-      "email": "",
-      "phone": "87876867867",
-      "address": "адрес никакой",
-      "about": "биография",
-      "registered": "20.07.2017",
-      "accessLevel": "guest"
-    },
-    {
-      "id": 12,
-      "guid": "",
       "isActive": false,
       "balance": "",
-      "picture": "http://placehold.it/128x128",
+      "picture": "",
       "age": 0,
-      "eyeColor": "",
-      "firstName": "Тестов",
-      "lastName": "Тестовый",
+      "accessLevel": "",
+      "firstName": "Хуй пизда джигурда",
+      "lastName": "",
       "company": "",
-      "email": "tesst@test.ru",
+      "email": "",
       "phone": "",
       "address": "",
       "about": "",
-      "registered": ""
+      "registed": ""
+    },
+    {
+      "id": 12,
+      "isActive": true,
+      "balance": "",
+      "picture": "",
+      "age": 0,
+      "accessLevel": "admin",
+      "firstName": "вфывфывфывфыв",
+      "lastName": "",
+      "company": "",
+      "email": "",
+      "phone": "",
+      "address": "",
+      "about": "",
+      "registed": ""
     }
   ]
 }
