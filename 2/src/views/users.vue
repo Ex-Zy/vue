@@ -11,9 +11,10 @@
       Oops: oops oops
     </div>
 
-    <user-list v-else :users="users" />
+    <user-list v-else :users="getFilteredUsers(users)" />
 
     <div class="table-bottom">
+
       <pagination
         v-model="currentPage"
         :total-rows="totalRows"
@@ -42,15 +43,9 @@
         users: [],
         currentPage: 1,
         perPage: 10,
-        totalRows: 100,
         pageOptions: [5, 10, 15]
       }
     },
-//    computed: {
-//      totalRows() {
-//        return this.users.length;
-//      }
-//    },
     mounted() {
       this.loadData();
     },
@@ -61,6 +56,17 @@
           .catch(e => {
             console.error(e)
           })
+      },
+      getFilteredUsers(users) {
+        let start = (this.currentPage-1) * this.perPage;
+        let end = start + this.perPage;
+
+        return users.slice(start, end);
+      }
+    },
+    computed: {
+      totalRows() {
+        return this.users.length;
       }
     }
   }
