@@ -14,7 +14,7 @@
 
 <script>
   export default {
-    name: 'form-select',
+    name: 'selectList',
     model: {
       prop: 'perPage',
       event: 'change'

@@ -32,8 +32,7 @@
           <button
             type="button"
             class="btn btn-secondary"
-            @click="changePage(page)"
-          >
+            @click="changePage(page)">
             {{page}}
           </button>
       </li>
@@ -123,30 +122,30 @@
   }
 </script>
 
-<style>
-  .pagination {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0;
-  }
-  .pagination__left {
-    order: 1;
-  }
-  .pagination__right {
-    order: 3;
-  }
-  .pagination-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 15px;
-    display: flex;
-    order: 2;
-  }
-  .pagination-list li {
-    margin: 0 2px;
-  }
-  .pagination-list li.is-active .btn {
-    background: #42b983;
-  }
+<style lang="sass" scoped>
+.pagination
+  position: relative
+  display: inline-flex
+  align-items: center
+  margin: 0
+  &__left
+    order: 1
+    .btn
+      margin: 0 5px 0 0
+  &__right
+    order: 3
+    .btn
+      margin: 0 0 0 5px
+.pagination-list
+  list-style: none
+  padding: 0
+  display: flex
+  align-items: center
+  order: 2
+  margin: 0
+  li
+    margin: 0 2px
+    &.is-active
+      .btn
+        background: #42b983
 </style>

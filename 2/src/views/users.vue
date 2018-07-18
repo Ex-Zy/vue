@@ -11,21 +11,24 @@
       Oops: oops oops
     </div>
 
-    <user-list v-else :users="getFilteredUsers(users)" />
-
-    <div class="table-bottom">
-
-      <pagination
-        v-model="currentPage"
-        :total-rows="totalRows"
-        :per-page="perPage"></pagination>
-
-      <form-select
-        v-model.number="perPage"
-        :options="pageOptions"></form-select>
-    </div>
+    <grid-table v-else>
+      <template slot="body">
+        <user-list
+          :users="getFilteredUsers(users)" />
+      </template>
+      <template slot="bottom">
+        <pagination
+          v-model="currentPage"
+          :total-rows="totalRows"
+          :per-page="perPage"></pagination>
+        <select-list
+          v-model.number="perPage"
+          :options="pageOptions"></select-list>
+      </template>
+    </grid-table>
 
   </div>
+
 </template>
 
 <script>
@@ -36,7 +39,8 @@
     components: {
       'user-list': () => import('@/components/UserList.vue'),
       'pagination': () => import('@/components/Pagination.vue'),
-      'form-select': () => import('@/components/FormSelect.vue')
+      'select-list': () => import('@/components/SelectList.vue'),
+      'grid-table': () => import('@/components/GridTable.vue')
     },
     data() {
       return {
