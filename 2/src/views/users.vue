@@ -11,20 +11,7 @@
       Oops: oops oops
     </div>
 
-    <grid-table v-else>
-      <template slot="body">
-        <user-list
-          :users="getFilteredUsers(users)" />
-      </template>
-      <template slot="bottom">
-        <pagination
-          v-model="currentPage"
-          :total-rows="totalRows"
-          :per-page="perPage"></pagination>
-        <select-list
-          v-model.number="perPage"
-          :options="pageOptions"></select-list>
-      </template>
+    <grid-table v-else :users="users">
     </grid-table>
 
   </div>
@@ -37,17 +24,11 @@
   export default {
     name: 'users',
     components: {
-      'user-list': () => import('@/components/UserList.vue'),
-      'pagination': () => import('@/components/Pagination.vue'),
-      'select-list': () => import('@/components/SelectList.vue'),
-      'grid-table': () => import('@/components/GridTable.vue')
+      'grid-table': () => import('@/components/grid/GridTable.vue')
     },
     data() {
       return {
-        users: [],
-        currentPage: 1,
-        perPage: 10,
-        pageOptions: [5, 10, 15]
+        users: []
       }
     },
     mounted() {
@@ -60,28 +41,13 @@
           .catch(e => {
             console.error(e)
           })
-      },
-      getFilteredUsers(users) {
-        let start = (this.currentPage-1) * this.perPage;
-        let end = start + this.perPage;
-
-        return users.slice(start, end);
-      }
-    },
-    computed: {
-      totalRows() {
-        return this.users.length;
       }
     }
   }
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   .users-list-page
     max-width: 90%
     margin: 0 auto
-  .table-bottom
-    display: flex
-    align-items: center
-    justify-content: space-between
 </style>
