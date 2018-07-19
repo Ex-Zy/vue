@@ -1,6 +1,11 @@
 <template>
-	<table class="table">
-		<thead>
+	<div class="table-wrp">
+		<div class="form-group mt-5">
+			<label for="search" class="h5">Search by name</label>
+			<input type="text" id="search" class="form-control" v-model="searchValue">
+		</div>
+		<table class="table">
+			<thead>
 			<tr>
 				<th>#</th>
 				<th>Имя</th>
@@ -11,26 +16,27 @@
 				<th>Телефон</th>
 				<th>Зарегистрирован</th>
 			</tr>
-		</thead>
-		<tbody>
-			<tr v-for="item in users"
-          :key="item.id"
+			</thead>
+			<tbody>
+			<tr v-for="item in filteredItems"
+					:key="item.id"
 			>
-        <td>
-          <router-link :to="'/edit/' + item.id">
-            # {{ item.id }}
-          </router-link>
-        </td>
-        <td>{{ item.firstName }}</td>
-        <td>{{ item.lastName }}</td>
-        <td>{{ item.isActive }}</td>
-        <td>{{ item.balance }}</td>
-        <td>{{ item.email }}</td>
-        <td>{{ item.phone }}</td>
-        <td>{{ item.registered }}</td>
-      </tr>
-		</tbody>
-	</table>
+				<td>
+					<router-link :to="'/edit/' + item.id">
+						# {{ item.id }}
+					</router-link>
+				</td>
+				<td>{{ item.firstName }}</td>
+				<td>{{ item.lastName }}</td>
+				<td>{{ item.isActive }}</td>
+				<td>{{ item.balance }}</td>
+				<td>{{ item.email }}</td>
+				<td>{{ item.phone }}</td>
+				<td>{{ item.registered }}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
 </template>
 
 <script>
@@ -41,7 +47,17 @@ export default {
       type: Array,
       required: true
     }
-  }
+  },
+	data() {
+    return {
+      searchValue: ''
+		}
+	},
+	computed: {
+    filteredItems() {
+      return this.users.filter(item => item.firstName.indexOf(this.searchValue) > -1)
+		}
+	}
 };
 </script>
 
