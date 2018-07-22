@@ -1,39 +1,46 @@
 <template>
 	<div class="table-wrp">
+
 		<div class="form-group mt-5">
 			<label for="search" class="h5">Search by name</label>
 			<input type="text" id="search" class="form-control" v-model="searchValue">
 		</div>
+
 		<table class="table">
 			<thead>
-			<tr>
-				<th>#</th>
-				<th>Имя</th>
-				<th>Фамилия</th>
-				<th>Активен</th>
-				<th>Баланс</th>
-				<th>Email</th>
-				<th>Телефон</th>
-				<th>Зарегистрирован</th>
-			</tr>
+        <tr>
+          <th>#</th>
+          <th>Имя</th>
+          <th>Фамилия</th>
+          <th>Активен</th>
+          <th>Баланс</th>
+          <th>Email</th>
+          <th>Телефон</th>
+          <th>Зарегистрирован</th>
+        </tr>
 			</thead>
 			<tbody>
-			<tr v-for="item in filteredItems"
-					:key="item.id"
-			>
-				<td>
-					<router-link :to="'/edit/' + item.id">
-						# {{ item.id }}
-					</router-link>
-				</td>
-				<td>{{ item.firstName }}</td>
-				<td>{{ item.lastName }}</td>
-				<td>{{ item.isActive }}</td>
-				<td>{{ item.balance }}</td>
-				<td>{{ item.email }}</td>
-				<td>{{ item.phone }}</td>
-				<td>{{ item.registered }}</td>
-			</tr>
+				<tr
+					v-if="!filteredItems.length">
+					<td colspan="8" class="table__empty">Result is empty</td>
+				</tr>
+				<tr
+					v-else
+					v-for="item in filteredItems"
+					:key="item.id">
+					<td>
+						<router-link :to="'/edit/' + item.id">
+							# {{ item.id }}
+						</router-link>
+					</td>
+					<td>{{ item.firstName }}</td>
+					<td>{{ item.lastName }}</td>
+					<td>{{ item.isActive }}</td>
+					<td>{{ item.balance }}</td>
+					<td>{{ item.email }}</td>
+					<td>{{ item.phone }}</td>
+					<td>{{ item.registered }}</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -55,7 +62,13 @@ export default {
 	},
 	computed: {
     filteredItems() {
-      return this.users.filter(item => item.firstName.indexOf(this.searchValue) > -1)
+      let val = this.searchValue.toLocaleLowerCase();
+
+      return this.users.filter(item => {
+        return item.firstName.toLocaleLowerCase().includes(val) ||
+          item.lastName.toLocaleLowerCase().includes(val) ||
+          item.email.toLocaleLowerCase().includes(val)
+			});
 		}
 	}
 };
@@ -78,5 +91,11 @@ export default {
 .table td {
   padding: 10px 20px;
   border: 1px solid #cdcdcd;
+}
+.table__empty {
+	text-align: center;
+	font-weight: normal;
+	font-size: 16px;
+	border: 0;
 }
 </style>

@@ -47,7 +47,7 @@
       loadData() {
         axios.get(this.loadUrl)
           .then(response => response.data)
-          .then(response => {this.user = response})
+          .then(response => this.user = response)
           .catch(e => {console.error(e)})
       },
       save() {
@@ -66,6 +66,7 @@
       }
     }
   }
+
 </script>
 
 <style lang="sass">
