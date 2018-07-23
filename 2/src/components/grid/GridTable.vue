@@ -3,7 +3,8 @@
     <div class="grid-table__body">
 
       <user-list
-        :users="getFilteredUsers"></user-list>
+        :users="getFilteredUsers"
+        :length="users.length"></user-list>
 
     </div>
     <div class="grid-table__bottom">

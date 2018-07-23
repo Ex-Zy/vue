@@ -1,9 +1,16 @@
 <template>
 	<div class="table-wrp">
 
-		<div class="form-group mt-5">
-			<label for="search" class="h5">Search by name</label>
-			<input type="text" id="search" class="form-control" v-model="searchValue">
+		<div class="topper">
+			<div class="topper__left">
+				<div class="topper__count">Всего {{length}} пользователей</div>
+			</div>
+			<div class="topper__right">
+				<div class="form-group">
+					<label for="search" class="h5">Search by name / lastname / email</label>
+					<input type="text" id="search" class="form-control" v-model="searchValue">
+				</div>
+			</div>
 		</div>
 
 		<table class="table">
@@ -43,6 +50,7 @@
 				</tr>
 			</tbody>
 		</table>
+
 	</div>
 </template>
 
@@ -53,7 +61,12 @@ export default {
     users: {
       type: Array,
       required: true
-    }
+    },
+		length: {
+      type: Number,
+			required: true,
+			dafault: 0
+		}
   },
 	data() {
     return {
@@ -74,7 +87,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .table {
   margin: 20px auto;
   border-collapse: collapse;
@@ -97,5 +110,22 @@ export default {
 	font-weight: normal;
 	font-size: 16px;
 	border: 0;
+}
+.topper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	&__count {
+		font: 16px sans-serif;
+	}
+	&__left {
+		padding: 15px 0 0;
+	}
+	&__right {
+		width: 400px;
+	}
+	.form-group {
+		margin: 0;
+	}
 }
 </style>
