@@ -19,7 +19,7 @@
 </template>
 
 <script>
-  import axios from 'axios';
+  import axios from '@/helpers/shortUrlToServer.js';
 
   export default {
     name: 'users',
@@ -36,7 +36,7 @@
     },
     methods: {
       loadData() {
-        axios.get('http://localhost:3004/users')
+        axios.get('/users')
           .then(({data}) => this.users = data)
           .catch(e => {
             console.error(e)

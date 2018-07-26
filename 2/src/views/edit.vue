@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import axios from 'axios';
+  import axios from '@/helpers/shortUrlToServer.js';
 
   export default {
     name: "edit",
@@ -47,7 +47,7 @@
       loadData() {
         axios.get(this.loadUrl)
           .then(response => response.data)
-          .then(response => this.user = response)
+          .then(response => (this.user = response))
           .catch(e => {console.error(e)})
       },
       save() {

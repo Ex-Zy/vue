@@ -2,20 +2,21 @@
   <div class="container mt-3">
     <h2 class="text-center">Добавление пользователя</h2>
     <div v-if="!user"
-         class="alert alert-warning"
-    >Загрузка</div>
+         class="alert alert-warning">Загрузка</div>
     <user-form v-else v-model="user" />
     <div class="text-center">
       <button type="button"
               class="btn btn-primary"
-              @click="saveUser"
-      >Сохранить</button>
+              @click="saveUser">Сохранить</button>
+      <button type="button"
+              class="btn btn-secondary"
+              @click="cancelUser">Отмена</button>
     </div>
   </div>
 </template>
 
 <script>
-  import axios from '@/helpers/shortUrl.js';
+  import axios from '@/helpers/shortUrlToServer.js';
 
   const emptyObject = {
     id: 0,
@@ -57,6 +58,10 @@
             this.redirectToList();
           })
           .catch(e => console.error(e))
+      },
+      cancelUser() {
+        console.log('Отмена');
+        this.redirectToList();
       },
       redirectToList() {
         this.$router.push('/users')
