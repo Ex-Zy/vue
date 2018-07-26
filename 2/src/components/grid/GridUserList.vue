@@ -3,7 +3,7 @@
 		<div class="units__top">
 			<div class="form-group">
 				<label for="search" class="h5">Search by name / lastname / email</label>
-				<input type="text" id="search" class="form-control" v-model="searchValue">
+				<input type="text" id="search" class="form-control" v-model.trim="searchValue">
 			</div>
 		</div>
 		<div class="units__body">
