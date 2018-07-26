@@ -85,6 +85,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+	.units {
+		display: flex;
+		flex-direction: column;
+		&__body {
+			overflow: auto;
+		}
+	}
   .table {
     margin: 20px auto;
     border-collapse: collapse;

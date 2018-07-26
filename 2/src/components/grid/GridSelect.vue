@@ -4,8 +4,8 @@
       class="page-rows__text">Кол. строк: </span>
     <select
       class="page-rows__select"
-      :perPage="perPage"
-      @change="changeValue">
+      :value="perPage"
+      @change="changeValue(perPage, $event)">
       <option
         v-for="option in options">{{option}}</option>
     </select>
@@ -30,8 +30,8 @@
       }
     },
     methods: {
-      changeValue($event) {
-        this.$emit('change', $event.target.value)
+      changeValue(val, e) {
+        this.$emit('change', val = e.target.value)
       }
     }
   }

@@ -20,6 +20,11 @@
 </template>
 
 <style lang="scss">
+  #app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
   .nav-link {
     font-size: 20px;
   }

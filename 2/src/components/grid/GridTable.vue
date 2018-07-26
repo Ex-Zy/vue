@@ -60,11 +60,19 @@
 <style lang="sass" scoped>
 .grid-table
   position: relative
+  display: flex
+  flex-direction: column
+  flex-grow: 1
   &__body
-    overflow: auto
+    flex-grow: 1
+    display: flex
+    flex-direction: column
+    
   &__bottom
     display: flex
     justify-content: space-between
     align-items: center
     padding: 20px 0
+    flex-grow: 0
+    flex-shrink: 0
 </style>

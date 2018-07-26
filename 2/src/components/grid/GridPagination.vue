@@ -27,8 +27,8 @@
       <li v-if="hasFirst">...</li>
       <li
         v-for="(page, index) in pages"
-        :class="{'is-active': page === currentPage}"
-        :key="'page-' + index">
+        :key="index"
+        :class="{'is-active': page === currentPage}">
           <button
             type="button"
             class="btn btn-secondary"
@@ -62,7 +62,7 @@
       },
       currentPage: {
         type: Number,
-        default: 1
+        required: true
       },
       perPage: {
         type: Number,
@@ -122,30 +122,38 @@
   }
 </script>
 
-<style lang="sass" scoped>
-.pagination
-  position: relative
-  display: inline-flex
-  align-items: center
-  margin: 0
-  &__left
-    order: 1
-    .btn
-      margin: 0 5px 0 0
-  &__right
-    order: 3
-    .btn
-      margin: 0 0 0 5px
-.pagination-list
-  list-style: none
-  padding: 0
-  display: flex
-  align-items: center
-  order: 2
-  margin: 0
-  li
-    margin: 0 2px
-    &.is-active
-      .btn
-        background: #42b983
+<style lang="scss" scoped>
+	.pagination {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		margin: 0;
+		&__left {
+			order: 1;
+			.btn {
+				margin: 0 5px 0 0;
+			}
+		}
+		&__right {
+			order: 3;
+			.btn {
+				margin: 0 0 0 5px;
+			}
+		}
+	}
+	
+	.pagination-list {
+		list-style: none;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		order: 2;
+		margin: 0;
+		li {
+			margin: 0 2px;
+			&.is-active .btn {
+				background: #42b983;
+			}
+		}
+	}
 </style>
