@@ -4,10 +4,10 @@
       class="page-rows__text">Кол. строк: </span>
     <select
       class="page-rows__select"
+      :perPage="perPage"
       @change="changeValue">
       <option
-        v-for="option in options"
-        :selected="option === perPage">{{option}}</option>
+        v-for="option in options">{{option}}</option>
     </select>
   </div>
 </template>
@@ -36,13 +36,13 @@
     }
   }
 </script>
-<style scoped>
+<style lang="scss" scoped>
   .page-rows {
     display: inline-flex;
     align-items: center;
-  }
-  .page-rows__text {
-    margin: 0 20px 0 0;
-    font: 14px/1.2 sans-serif
+    &__text {
+      margin: 0 20px 0 0;
+      font: 14px/1.2 sans-serif
+    }
   }
 </style>

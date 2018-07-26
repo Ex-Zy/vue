@@ -3,14 +3,14 @@
     <div class="grid-table__body">
 
       <user-list
-        :users="getFilteredUsers"
+        :users="filteredUsers"
         :length="users.length"></user-list>
 
     </div>
     <div class="grid-table__bottom">
 
       <pagination
-        v-model="currentPage"
+        v-model.number="currentPage"
         :total-rows="totalRows"
         :per-page="perPage"></pagination>
 
@@ -47,7 +47,7 @@
       totalRows() {
         return this.users.length;
       },
-      getFilteredUsers() {
+      filteredUsers() {
         let start = (this.currentPage-1) * this.perPage;
         let end = start + this.perPage;
 
