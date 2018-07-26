@@ -1,56 +1,53 @@
 <template>
-	<div class="table-wrp">
-
-		<div class="topper">
-			<div class="topper__left">
-				<div class="topper__count">Всего {{length}} пользователей</div>
-			</div>
-			<div class="topper__right">
-				<div class="form-group">
-					<label for="search" class="h5">Search by name / lastname / email</label>
-					<input type="text" id="search" class="form-control" v-model="searchValue">
-				</div>
+	<div class="units">
+		<div class="units__top">
+			<div class="form-group">
+				<label for="search" class="h5">Search by name / lastname / email</label>
+				<input type="text" id="search" class="form-control" v-model="searchValue">
 			</div>
 		</div>
-
-		<table class="table">
-			<thead>
-        <tr>
-          <th>#</th>
-          <th>Имя</th>
-          <th>Фамилия</th>
-          <th>Активен</th>
-          <th>Баланс</th>
-          <th>Email</th>
-          <th>Телефон</th>
-          <th>Зарегистрирован</th>
-        </tr>
-			</thead>
-			<tbody>
-				<tr
-					v-if="!filteredItems.length">
-					<td colspan="8" class="table__empty">Result is empty</td>
-				</tr>
-				<tr
-					v-else
-					v-for="item in filteredItems"
-					:key="item.id">
-					<td>
-						<router-link :to="'/edit/' + item.id">
-							# {{ item.id }}
-						</router-link>
-					</td>
-					<td>{{ item.firstName }}</td>
-					<td>{{ item.lastName }}</td>
-					<td>{{ item.isActive }}</td>
-					<td>{{ item.balance }}</td>
-					<td>{{ item.email }}</td>
-					<td>{{ item.phone }}</td>
-					<td>{{ item.registered }}</td>
-				</tr>
-			</tbody>
-		</table>
-
+		<div class="units__body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Имя</th>
+						<th>Фамилия</th>
+						<th>Активен</th>
+						<th>Баланс</th>
+						<th>Email</th>
+						<th>Телефон</th>
+						<th>Зарегистрирован</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr
+						v-if="!filteredItems.length">
+						<td colspan="8" class="table__last-row">Result is empty</td>
+					</tr>
+					<tr
+						v-else
+						v-for="item in filteredItems"
+						:key="item.id">
+						<td>
+							<router-link :to="'/edit/' + item.id">
+								# {{ item.id }}
+							</router-link>
+						</td>
+						<td>{{ item.firstName }}</td>
+						<td>{{ item.lastName }}</td>
+						<td>{{ item.isActive }}</td>
+						<td>{{ item.balance }}</td>
+						<td>{{ item.email }}</td>
+						<td>{{ item.phone }}</td>
+						<td>{{ item.registered }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="units__bottom">
+			Всего {{length}} пользователей
+		</div>
 	</div>
 </template>
 
@@ -88,44 +85,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.table {
-  margin: 20px auto;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 18px;
-  white-space: nowrap;
-}
-.table th {
-  text-align: left;
-  font-size: 18px;
-  font-weigt: 800;
-  padding: 5px 20px;
-}
-.table td {
-  padding: 10px 20px;
-  border: 1px solid #cdcdcd;
-}
-.table__empty {
-	text-align: center;
-	font-weight: normal;
-	font-size: 16px;
-	border: 0;
-}
-.topper {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	&__count {
-		font: 16px sans-serif;
-	}
-	&__left {
-		padding: 15px 0 0;
-	}
-	&__right {
-		width: 400px;
-	}
-	.form-group {
-		margin: 0;
-	}
-}
+  .table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 18px;
+    white-space: nowrap;
+    &__last-row {
+      text-align: center;
+      font-weight: normal;
+      font-size: 16px;
+      border: 0;
+    }
+    th {
+      text-align: left;
+      font-size: 18px;
+      font-weight: 800;
+      padding: 5px 20px;
+    }
+    td {
+      padding: 10px 20px;
+      border: 1px solid #cdcdcd;
+    }
+  }
 </style>
+
